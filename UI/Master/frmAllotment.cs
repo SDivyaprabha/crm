@@ -129,7 +129,7 @@ namespace CRM
                 if (m_sCancelType == "F")
                 {
                     if (dt.Rows[0]["CancelType"].ToString() == "L")
-                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["CancelPenalty"]);
+                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["CancelPen"]);
                     else
                         txtAmt.EditValue = decimal.Round(Convert.ToDecimal(dt.Rows[0]["NetAmount"]) * Convert.ToDecimal(dt.Rows[0]["CancelPenalty"]) / 100, 3);
                 }
