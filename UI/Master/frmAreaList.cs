@@ -86,9 +86,9 @@ namespace CRM
                 dtArea = UnitDirBL.GetArea(m_sEAreaId);
                 grdArea.DataSource = dtArea;
                 grdViewArea.Columns["AreaId"].Visible = false;
-                grdViewArea.Columns["AreaSqftt"].Visible = false;
+                grdViewArea.Columns["AreaSqft"].Visible = false;
                 grdViewArea.Columns["Description"].OptionsColumn.ReadOnly = true;
-                grdViewArea.Columns["Description"].OptionsColumn.AllowEdit = false;
+                grdViewArea.Columns["Descrip"].OptionsColumn.AllowEdit = false;
                 grdViewArea.Columns["Sel"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
                 RepositoryItemCheckEdit chkSel = new RepositoryItemCheckEdit();
                 chkSel.CheckedChanged += chkSel_CheckedChanged;
