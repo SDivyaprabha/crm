@@ -136,7 +136,7 @@ namespace CRM
                 else
                 {
                     if (dt.Rows[0]["BookingType"].ToString() == "L")
-                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["BookingPena"]);
+                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["BookingPenalt"]);
                     else
                         txtAmt.EditValue = decimal.Round(Convert.ToDecimal(dt.Rows[0]["NetAmt"]) * Convert.ToDecimal(dt.Rows[0]["BookingPenalty"]) / 100, 3);
                 }
