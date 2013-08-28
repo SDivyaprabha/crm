@@ -62,7 +62,7 @@ namespace CRM
             if (BsfGlobal.g_sUnPermissionMode == "H")
             {
                 if (BsfGlobal.FindPermission("Bank-") == false) btnAdd.Visibility = BarItemVisibility.Never;
-                if (BsfGlobal.FindPermission("Bank-Modify") == false) btnEdit.Visibility = BarItemVisibility.Never;
+                if (BsfGlobal.FindPermission("Bank-") == false) btnEdit.Visibility = BarItemVisibility.Never;
                 if (BsfGlobal.FindPermission("Bank-Delete") == false) btnDelete.Visibility = BarItemVisibility.Never;
 
                 else if (BsfGlobal.g_sUnPermissionMode == "D")
