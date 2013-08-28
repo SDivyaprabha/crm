@@ -49,7 +49,7 @@ namespace CRM
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (BsfGlobal.FindPermission("Flat-Cancellation-Create") == false)
+            if (BsfGlobal.FindPermission("Flat-Cancel-Creating") == false)
             {
                 MessageBox.Show("You don't have Rights to Flat-Cancellation-Create");
                 return;
@@ -57,7 +57,7 @@ namespace CRM
             string date = UnitDirBL.FoundCancelDate(m_iFlatId);
             if (Convert.ToDateTime(txtDate.EditValue) >= Convert.ToDateTime(CommFun.IsNullCheck(date, CommFun.datatypes.VarTypeDate)))
             { }
-            else { MessageBox.Show("Date Earlier Than Current Date"); txtDate.Focus(); return; }
+            else { MessageBox.Show("Date Earlier Than Cur Date"); txtDate.Focus(); return; }
             if (txtAmt.EditValue == null || txtAmt.EditValue.ToString() == "")
             { MessageBox.Show("Enter Penalty Amount"); txtAmt.Focus(); return; }
 
@@ -129,14 +129,14 @@ namespace CRM
                 if (m_sCancelType == "F")
                 {
                     if (dt.Rows[0]["CancelType"].ToString() == "L")
-                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["CancelPen"]);
+                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["CancelPenalty"]);
                     else
-                        txtAmt.EditValue = decimal.Round(Convert.ToDecimal(dt.Rows[0]["NetAmount"]) * Convert.ToDecimal(dt.Rows[0]["CancelPenalty"]) / 100, 3);
+                        txtAmt.EditValue = decimal.Round(Convert.ToDecimal(dt.Rows[0]["NetAmt"]) * Convert.ToDecimal(dt.Rows[0]["CancelPenalty"]) / 100, 3);
                 }
                 else
                 {
                     if (dt.Rows[0]["BookingType"].ToString() == "L")
-                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["BookingPenalt"]);
+                        txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["BookingPenalty"]);
                     else
                         txtAmt.EditValue = decimal.Round(Convert.ToDecimal(dt.Rows[0]["NetAmt"]) * Convert.ToDecimal(dt.Rows[0]["BookingPenalty"]) / 100, 3);
                 }
@@ -160,14 +160,14 @@ namespace CRM
             if (dt.Rows.Count > 0)
             {
                 m_iCancelId = Convert.ToInt32(dt.Rows[0]["CancelId"]);
-                txtCCName.Text = dt.Rows[0]["CostCentreName"].ToString();
+                txtCCName.Text = dt.Rows[0]["CostCentre"].ToString();
                 txtFlatNo.Text = dt.Rows[0]["FlatNo"].ToString();
                 txtBuyerName.Text = dt.Rows[0]["LeadName"].ToString();
-                txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["PenaltyAmt"]);
+                txtAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["PenaltyAmount"]);
                 txtRecvAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["ReceivableAmount"]);
                 txtRecdAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["ReceivedAmount"]);
                 txtBalAmt.EditValue = Convert.ToDecimal(dt.Rows[0]["BalanceAmount"]);
-                txtDate.EditValue = Convert.ToDateTime(dt.Rows[0]["CancelDate"]).ToString("dd/MM/yyyy");
+                txtDate.EditValue = Convert.ToDateTime(dt.Rows[0]["CancelDat"]).ToString("dd/MM/yyyy");
                 txtRemarks.EditValue = dt.Rows[0]["Remarks"].ToString();
             }
         }
